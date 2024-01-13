@@ -3,15 +3,17 @@ class Animal
     @possession_player = possession_player
   end
 
-  def initial_position
-    # TODO: 先手か後手かによって変わる初期配置を返す
-  end
+  attr_reader :possession_player
 
-  def movable?(current_position, moving_position)
+  def initial_position
     raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
 
+  def movable?(current_position, moving_position)
+    # raise NotImplementedError, "You must implement #{self.class}##{__method__}"
+  end
+
   def shortened_name
-    # TODO: 局面図上での名前を返す
+    raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
 end
