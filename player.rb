@@ -6,10 +6,17 @@ class Player
     @first_move = first_move
   end
 
-  attr_reader :animals_in_hand, :first_move
+  attr_accessor :animals_in_hand
+  attr_reader :first_move
 
-  def move_animal(from:, to:)
-    # TODO: 動物を移動させるメソッド
+  def move_animal(board:, from:, to:)
+    if from.nil?
+      animal_class, key, index = MoveInstructionParser.new(to).parse.values_at(:animal_class, :column_key, :row_index)
+      animal = animals_in_hand.find { |animal_in_hand| animal_in_hand.is_a?(animal_class) }
+      # TODO: boardの指定位置に駒が存在するかどうかの判定が必要
+      board.position[index][key] = animal
+      board.placed_animals << animal
+    end
   end
 
   def capture(animal)
