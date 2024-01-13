@@ -12,6 +12,6 @@ class Animal::Giraffe < Animal
   end
 
   def initial_position
-    possession_player.first_move? ? 'A4' : 'C1'
+    possession_player.first_move? ? 'C4' : 'A1'
   end
 end

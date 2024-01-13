@@ -8,7 +8,7 @@ class Animal::Elephant < Animal
   end
 
   def initial_position
-    possession_player.first_move? ? 'C4' : 'A1'
+    possession_player.first_move? ? 'A4' : 'C1'
   end
 
   def movable?(current_position, moving_position)
