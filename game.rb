@@ -1,23 +1,35 @@
 class Game
   def initialize
-    @sente = Player.new(animals: build_sente_animals, first_move: true)
-    @gote = Player.new(animals: build_gote_animals, first_move: false)
-    @board = build_board
+    @sente = Player.new(animals_in_hand: [], first_move: true)
+    @gote = Player.new(animals_in_hand: [], first_move: false)
+    @board = Board.new(placed_animals: [])
   end
+
+  attr_reader :sente, :gote, :board
+
+  INITIAL_ANIMALS = [Animal::Lion, Animal::Chick, Animal::Elephant, Animal::Giraffe]
 
   def start
-    # TODO: ゲーム開始メソッド
+    sharing_animals
+    prepare_board
+    binding.irb
   end
 
-  def build_sente_animals
-    # TODO: 先手の駒を用意
+  private
+
+  def prepare_board
+    [sente, gote].each do |player|
+      player.animals_in_hand.each do |animal|
+        initial_position_instruction = "#{animal.initial_position}#{animal.shortened_name}"
+        sente.move_animal(board: board, from: nil, to: initial_position_instruction)
+      end
+    end
   end
 
-  def build_gote_animals
-    # TODO: 後手の駒を用意
-  end
-
-  def build_board
-    # TODO: ボードを用意して駒を並べる
+  def sharing_animals
+    INITIAL_ANIMALS.each do |animal|
+      sente.animals_in_hand << animal.new(possession_player: sente)
+      sente.animals_in_hand << animal.new(possession_player: gote)
+    end
   end
 end
