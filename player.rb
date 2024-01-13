@@ -6,6 +6,8 @@ class Player
     @first_move = first_move
   end
 
+  attr_reader :animals, :first_move
+
   def move_animal(from:, to:)
     # TODO: 動物を移動させるメソッド
   end
@@ -16,5 +18,9 @@ class Player
 
   def win(game)
     # TODO: 勝利が決定するメソッド
+  end
+
+  def first_move?
+    first_move
   end
 end
