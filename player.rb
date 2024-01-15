@@ -30,4 +30,8 @@ class Player
   def first_move?
     first_move
   end
+
+  def show_hands
+    animals_in_hand.map(&:shortened_name).join(', ')
+  end
 end

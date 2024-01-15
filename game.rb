@@ -12,6 +12,7 @@ class Game
   def start
     sharing_animals
     prepare_board
+    show_diagram_and_hands
     binding.irb
   end
 
@@ -31,5 +32,11 @@ class Game
       sente.animals_in_hand << animal.new(possession_player: sente)
       gote.animals_in_hand << animal.new(possession_player: gote)
     end
+  end
+
+  def show_diagram_and_hands
+    puts "後手：#{gote.show_hands}"
+    board.show_diagram
+    puts "先手：#{sente.show_hands}"
   end
 end
