@@ -20,7 +20,9 @@ class Game
 
   def prepare_board
     [sente, gote].each do |player|
-      player.animals_in_hand.each do |animal|
+      # player.animals_in_handをそのまま使うと、3度目のループでsize < iとなり終了してしまうため、配列をコピーする
+      initial_animals_in_hand = player.animals_in_hand.dup
+      initial_animals_in_hand.each do |animal|
         initial_position_instruction = "#{animal.initial_position}#{animal.shortened_name}"
         player.move_animal(board: board, from: nil, to: initial_position_instruction)
       end
@@ -28,9 +30,9 @@ class Game
   end
 
   def sharing_animals
-    INITIAL_ANIMALS.each do |animal|
-      sente.animals_in_hand << animal.new(possession_player: sente)
-      gote.animals_in_hand << animal.new(possession_player: gote)
+    INITIAL_ANIMALS.each do |animal_class|
+      sente.animals_in_hand << animal_class.new(possession_player: sente)
+      gote.animals_in_hand << animal_class.new(possession_player: gote)
     end
   end
 

@@ -12,10 +12,11 @@ class Player
   def move_animal(board:, from:, to:)
     if from.nil?
       animal_class, key, index = MoveInstructionParser.new(to).parse.values_at(:animal_class, :column_key, :row_index)
-      animal = animals_in_hand.find { |animal_in_hand| animal_in_hand.is_a?(animal_class) }
+      move_animal_index = animals_in_hand.find_index { |animal_in_hand| animal_in_hand.is_a?(animal_class) }
+      move_animal = animals_in_hand.delete_at(move_animal_index)
       # TODO: boardの指定位置に駒が存在するかどうかの判定が必要
-      board.positions[index][key] = animal
-      board.placed_animals << animal
+      board.positions[index][key] = move_animal
+      board.placed_animals << move_animal
     end
   end
 
