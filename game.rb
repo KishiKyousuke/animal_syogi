@@ -21,7 +21,7 @@ class Game
     [sente, gote].each do |player|
       player.animals_in_hand.each do |animal|
         initial_position_instruction = "#{animal.initial_position}#{animal.shortened_name}"
-        sente.move_animal(board: board, from: nil, to: initial_position_instruction)
+        player.move_animal(board: board, from: nil, to: initial_position_instruction)
       end
     end
   end
@@ -29,7 +29,7 @@ class Game
   def sharing_animals
     INITIAL_ANIMALS.each do |animal|
       sente.animals_in_hand << animal.new(possession_player: sente)
-      sente.animals_in_hand << animal.new(possession_player: gote)
+      gote.animals_in_hand << animal.new(possession_player: gote)
     end
   end
 end
