@@ -14,7 +14,7 @@ class Player
       animal_class, key, index = MoveInstructionParser.new(to).parse.values_at(:animal_class, :column_key, :row_index)
       animal = animals_in_hand.find { |animal_in_hand| animal_in_hand.is_a?(animal_class) }
       # TODO: boardの指定位置に駒が存在するかどうかの判定が必要
-      board.position[index][key] = animal
+      board.positions[index][key] = animal
       board.placed_animals << animal
     end
   end

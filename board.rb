@@ -1,6 +1,6 @@
 class Board
   def initialize(placed_animals:)
-    @position = [
+    @positions = [
       {A: nil, B: nil, C: nil},
       {A: nil, B: nil, C: nil},
       {A: nil, B: nil, C: nil},
@@ -10,7 +10,7 @@ class Board
     @placed_animals = placed_animals
   end
 
-  attr_accessor :position, :placed_animals
+  attr_accessor :positions, :placed_animals
 
   def movable?(current_position, moving_position)
     # TODO: 指定された位置に移動可能かを判定する

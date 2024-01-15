@@ -11,9 +11,9 @@ module Judge
 
   def lion_try?(board, player)
     win_area = if player.first_move?
-                 board.position[0].values
+                 board.positions[0].values
                else
-                 board.position[3].values
+                 board.positions[3].values
                end
 
     win_area.values.any? { |animal| animal.is_a?(Animal::Lion) && animal.possession_player == player }
