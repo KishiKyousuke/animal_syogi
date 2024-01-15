@@ -1,4 +1,6 @@
 class Board
+  include Diagram
+
   def initialize(placed_animals:)
     @positions = [
       {A: nil, B: nil, C: nil},
@@ -16,7 +18,9 @@ class Board
     # TODO: 指定された位置に移動可能かを判定する
   end
 
-  def diagram
-    # TODO: 局面図を返す
+  def show_diagram
+    generate_diagram_rows(self).each do |row|
+      puts row
+    end
   end
 end
