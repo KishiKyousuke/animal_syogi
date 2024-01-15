@@ -6,6 +6,7 @@ require_relative 'animal/chick'
 require_relative 'animal/chicken'
 require_relative 'move_instruction_parser'
 require_relative 'player'
+require_relative 'diagram'
 require_relative 'board'
 require_relative 'game'
 
