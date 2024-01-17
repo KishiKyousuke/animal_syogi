@@ -12,8 +12,14 @@ class Game
   def start
     sharing_animals
     prepare_board
+    puts '先手：入力してください'
     show_diagram_and_hands
-    binding.irb
+    sente_input = gets
+    from, to = InputParser.new(sente_input).parse
+    sente.move_animal(board: board, from: from, to: to)
+    puts '後手：入力してください'
+    show_diagram_and_hands
+    gote_input = gets
   end
 
   private
