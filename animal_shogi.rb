@@ -8,6 +8,7 @@ require_relative 'move_instruction_parser'
 require_relative 'player'
 require_relative 'diagram'
 require_relative 'board'
+require_relative 'input_parser'
 require_relative 'game'
 
 game = Game.new
