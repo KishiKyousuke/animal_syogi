@@ -36,23 +36,23 @@ class Player
   private
 
   def drop_from_hand(board, to)
-    animal_class, key, index = MoveInstructionParser.new(to).parse.values_at(:animal_class, :column_key, :row_index)
-    move_animal_index = animals_in_hand.find_index { |animal_in_hand| animal_in_hand.is_a?(animal_class) }
+    from_instruction = MoveInstructionParser.new(to).parse
+    move_animal_index = animals_in_hand.find_index { |animal_in_hand| animal_in_hand.is_a?(from_instruction[:animal_class]) }
     move_animal = animals_in_hand.delete_at(move_animal_index)
     # TODO: boardの指定位置に駒が存在するかどうかの判定が必要
-    board.positions[index][key] = move_animal
+    board.positions[from_instruction[:row_index]][from_instruction[:column_key]] = move_animal
     board.placed_animals << move_animal
   end
 
   def move_from(board, from, to)
-    animal_class, from_key, from_index = MoveInstructionParser.new(from).parse.values
-    animal = board.positions[from_index][from_key]
+    from_instruction = MoveInstructionParser.new(from).parse
+    animal = board.positions[from_instruction[:row_index]][from_instruction[:column_key]]
     # TODO: 指定したanimalが存在するかのチェック
-    board.positions[from_index][from_key] = nil
-    _animal_class, to_key, to_index = MoveInstructionParser.new(to).parse.values
+    board.positions[from_instruction[:row_index]][from_instruction[:column_key]] = nil
+    to_instruction = MoveInstructionParser.new(to).parse
     # TODO: 指定したanimalがその動きができるかのチェック
     # TODO: 移動先が正しいかのチェック
     # TODO: 移動後の処理（capture, try, growなど）
-    board.positions[to_index][to_key] = animal
+    board.positions[to_instruction[:row_index]][to_instruction[:column_key]] = animal
   end
 end
