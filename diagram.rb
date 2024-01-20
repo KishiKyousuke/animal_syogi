@@ -3,7 +3,7 @@ module Diagram
 
   def generate_diagram_rows(board)
     board.positions.map.with_index(1) do |position, i|
-      shortened_names_and_row_number = position.values.map { |animal| animal&.shortened_name }.unshift(i)
+      shortened_names_and_row_number = position.map { |animal| animal&.shortened_name }.unshift(i)
       divide_into_cells(shortened_names_and_row_number)
     end.unshift(divide_into_cells(HEADERS))
   end

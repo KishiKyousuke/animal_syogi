@@ -27,16 +27,16 @@ RSpec.describe Diagram do
 
       before do
         # 先手初期配置
-        board.positions[3][:A] = sente_elephant
-        board.positions[3][:B] = sente_lion
-        board.positions[3][:C] = sente_giraffe
-        board.positions[2][:B] = sente_chick
+        board.positions[3][0] = sente_elephant
+        board.positions[3][1] = sente_lion
+        board.positions[3][2] = sente_giraffe
+        board.positions[2][1] = sente_chick
 
         # 後手初期配置
-        board.positions[0][:A] = gote_giraffe
-        board.positions[0][:B] = gote_lion
-        board.positions[0][:C] = gote_elephant
-        board.positions[1][:B] = gote_chick
+        board.positions[0][0] = gote_giraffe
+        board.positions[0][1] = gote_lion
+        board.positions[0][2] = gote_elephant
+        board.positions[1][1] = gote_chick
       end
 
       it '局面図の各列を格納した配列を返す' do
