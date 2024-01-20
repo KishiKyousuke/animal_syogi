@@ -8,7 +8,7 @@ class MoveInstructionParser
   def parse
     # TODO: 命令形式のバリデーションを追加する
     column_position, row_position, shortened_name = input.chars
-    { animal_class: shortened_name_to_class(shortened_name), column_key: column_position.to_sym, row_index: row_position.to_i - 1}
+    { animal_class: shortened_name_to_class(shortened_name), column_index: alphabet_to_index(column_position), row_index: row_position.to_i - 1}
   end
 
   private
@@ -25,6 +25,17 @@ class MoveInstructionParser
       Animal::Elephant
     when 'G', 'g'
       Animal::Giraffe
+    end
+  end
+
+  def alphabet_to_index(alphabet)
+    case alphabet
+    when 'A', 'a'
+      0
+    when 'B', 'b'
+      1
+    when 'C', 'c'
+      2
     end
   end
 end
