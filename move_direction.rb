@@ -35,7 +35,7 @@ class MoveDirection
   end
 
   def retreat?
-    !advance?
+    @player.first_move? ? row_index_difference == -1 : row_index_difference == 1
   end
 
   def move_sideways?
