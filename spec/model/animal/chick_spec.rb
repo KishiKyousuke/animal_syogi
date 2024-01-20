@@ -1,7 +1,3 @@
-require_relative '../../../player'
-require_relative '../../../animal'
-require_relative '../../../animal/chick'
-
 RSpec.describe Animal::Chick do
   describe '#shortened_name' do
     let!(:chick) { Animal::Chick.new(possession_player: possession_player) }

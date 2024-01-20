@@ -3,7 +3,20 @@
 # The generated `.rspec` file contains `--require spec_helper` which will cause
 # this file to always be loaded, without a need to explicitly require it in any
 # files.
-#
+
+require_relative '../animal'
+require_relative '../animal/lion'
+require_relative '../animal/elephant'
+require_relative '../animal/giraffe'
+require_relative '../animal/chick'
+require_relative '../animal/chicken'
+require_relative '../move_instruction_parser'
+require_relative '../player'
+require_relative '../diagram'
+require_relative '../board'
+require_relative '../input_parser'
+require_relative '../game'
+
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
 # will add to the boot time of your test suite on EVERY test run, even for an

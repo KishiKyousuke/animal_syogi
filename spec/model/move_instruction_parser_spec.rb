@@ -1,10 +1,3 @@
-require_relative '../../move_instruction_parser'
-require_relative '../../animal'
-require_relative '../../animal/elephant'
-require_relative '../../animal/lion'
-require_relative '../../animal/giraffe'
-require_relative '../../animal/chick'
-
 RSpec.describe MoveInstructionParser do
   describe '#parse' do
     it '与えられた指示を解析してhashを返すこと' do

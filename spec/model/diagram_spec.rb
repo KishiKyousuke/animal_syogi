@@ -1,12 +1,3 @@
-require_relative '../../diagram'
-require_relative '../../board'
-require_relative '../../player'
-require_relative '../../animal'
-require_relative '../../animal/chick'
-require_relative '../../animal/elephant'
-require_relative '../../animal/giraffe'
-require_relative '../../animal/lion'
-
 RSpec.describe Diagram do
   describe '#generate_diagram_rows' do
     let(:board) { Board.new(placed_animals: []) }

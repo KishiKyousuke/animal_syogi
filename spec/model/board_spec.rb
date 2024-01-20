@@ -1,6 +1,3 @@
-require_relative '../../diagram'
-require_relative '../../board'
-
 RSpec.describe Board do
 
   describe '#movable?' do
