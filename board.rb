@@ -3,10 +3,10 @@ class Board
 
   def initialize(placed_animals:)
     @positions = [
-      {A: nil, B: nil, C: nil},
-      {A: nil, B: nil, C: nil},
-      {A: nil, B: nil, C: nil},
-      {A: nil, B: nil, C: nil},
+      [nil, nil, nil],
+      [nil, nil, nil],
+      [nil, nil, nil],
+      [nil, nil, nil],
     ]
     # 盤上に存在している動物
     @placed_animals = placed_animals
