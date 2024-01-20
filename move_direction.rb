@@ -31,7 +31,7 @@ class MoveDirection
   end
 
   def advance?
-    @player.first_move? ? row_index_difference.positive? : row_index_difference.negative?
+    @player.first_move? ? row_index_difference == 1 : row_index_difference == -1
   end
 
   def retreat?
@@ -39,6 +39,6 @@ class MoveDirection
   end
 
   def move_sideways?
-
+    @from_instruction[:column_index] != @to_instruction[:column_index]
   end
 end
