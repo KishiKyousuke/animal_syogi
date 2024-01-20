@@ -15,6 +15,7 @@ require_relative '../player'
 require_relative '../diagram'
 require_relative '../board'
 require_relative '../input_parser'
+require_relative '../move_direction'
 require_relative '../game'
 
 # Given that it is always loaded, you are encouraged to keep this file as
