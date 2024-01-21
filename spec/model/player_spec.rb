@@ -27,4 +27,20 @@ RSpec.describe Player do
       expect(player.show_hands).to eq 'c, g'
     end
   end
+
+  describe '#name' do
+    let!(:player) { Player.new(animals_in_hand: [], first_move: first_move) }
+
+    context '先手の場合' do
+      let(:first_move) { true }
+
+      it { expect(player.name).to eq '先手' }
+    end
+
+    context '後手の場合' do
+      let(:first_move) { false }
+
+      it { expect(player.name).to eq '後手' }
+    end
+  end
 end

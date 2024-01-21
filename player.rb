@@ -4,10 +4,11 @@ class Player
     @animals_in_hand = animals_in_hand
     # 先手番かどうか？
     @first_move = first_move
+    @name = first_move ? '先手' : '後手'
   end
 
   attr_accessor :animals_in_hand
-  attr_reader :first_move
+  attr_reader :first_move, :name
 
   def move_animal(board:, from:, to:)
     if from.nil?
