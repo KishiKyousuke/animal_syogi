@@ -30,6 +30,10 @@ class MoveDirection
     @from_instruction[:row_index] - @to_instruction[:row_index]
   end
 
+  def column_index_difference
+    @from_instruction[:column_index] - @to_instruction[:column_index]
+  end
+
   def advance?
     @player.first_move? ? row_index_difference == 1 : row_index_difference == -1
   end
@@ -39,6 +43,6 @@ class MoveDirection
   end
 
   def move_sideways?
-    @from_instruction[:column_index] != @to_instruction[:column_index]
+    @from_instruction[:column_index] != @to_instruction[:column_index] && column_index_difference.abs == 1
   end
 end
