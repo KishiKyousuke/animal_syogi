@@ -12,14 +12,7 @@ class Game
   def start
     sharing_animals
     prepare_board
-    puts '先手：入力してください'
-    show_diagram_and_hands
-    sente_input = gets
-    from, to = InputParser.new(sente_input).parse
-    sente.move_animal(board: board, from: from, to: to)
-    puts '後手：入力してください'
-    show_diagram_and_hands
-    gote_input = gets
+    taking_turns
   end
 
   private
@@ -46,5 +39,20 @@ class Game
     puts "後手：#{gote.show_hands}"
     board.show_diagram
     puts "先手：#{sente.show_hands}"
+  end
+
+  def taking_turns
+    loop do
+      [sente, gote].each do |player|
+        puts "#{player.name}：入力してください"
+        show_diagram_and_hands
+        input = gets
+        from, to = InputParser.new(input).parse
+        player.move_animal(board:, from:, to:)
+      rescue InvalidAnimalMovableRangeError => e
+        puts e.message
+        redo
+      end
+    end
   end
 end
