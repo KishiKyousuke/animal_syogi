@@ -9,7 +9,7 @@ class Animal
     raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
 
-  def movable?(current_position, moving_position)
+  def validate_movable_range(from_instruction, to_instruction)
     # raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
 

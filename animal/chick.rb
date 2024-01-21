@@ -3,7 +3,7 @@ class Animal::Chick < Animal
     super
   end
 
-  def movable?(current_position, moving_position)
+  def validate_movable_range(from_instruction, to_instruction)
     # TODO: ひよこの移動可能な位置かを判定
   end
 
