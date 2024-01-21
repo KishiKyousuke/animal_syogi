@@ -1,3 +1,4 @@
+require_relative 'move_direction'
 require_relative 'animal'
 require_relative 'animal/lion'
 require_relative 'animal/elephant'
@@ -9,6 +10,7 @@ require_relative 'player'
 require_relative 'diagram'
 require_relative 'board'
 require_relative 'input_parser'
+require_relative 'exceptions/invalid_animal_movable_range_error'
 require_relative 'game'
 
 game = Game.new

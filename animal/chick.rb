@@ -4,7 +4,8 @@ class Animal::Chick < Animal
   end
 
   def validate_movable_range(from_instruction, to_instruction)
-    # TODO: ひよこの移動可能な位置かを判定
+    move_direction = MoveDirection.new(from_instruction, to_instruction, possession_player)
+    raise InvalidAnimalMovableRangeError unless move_direction.advance_straight_ahead?
   end
 
   def shortened_name

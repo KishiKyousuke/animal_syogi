@@ -47,13 +47,13 @@ class Player
 
   def move_from(board, from, to)
     from_instruction = MoveInstructionParser.new(from).parse
+    to_instruction = MoveInstructionParser.new(to).parse
     animal = board.positions[from_instruction[:row_index]][from_instruction[:column_index]]
     # TODO: 指定したanimalが存在するかのチェック
-    board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = nil
-    to_instruction = MoveInstructionParser.new(to).parse
-    # TODO: 指定したanimalがその動きができるかのチェック
+    animal.validate_movable_range(from_instruction, to_instruction)
     # TODO: 移動先が正しいかのチェック
     # TODO: 移動後の処理（capture, try, growなど）
+    board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = nil
     board.positions[to_instruction[:row_index]][to_instruction[:column_index]] = animal
   end
 end

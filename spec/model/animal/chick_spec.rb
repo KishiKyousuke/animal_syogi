@@ -31,7 +31,23 @@ RSpec.describe Animal::Chick do
     end
   end
 
-  describe '#movable?' do
+  describe '#validate_movable_range' do
+    let!(:chick) { Animal::Chick.new(possession_player: possession_player) }
+    let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
+
+    context '移動可能な場合' do
+      let(:from_instruction) { MoveInstructionParser.new('B3C').parse }
+      let(:to_instruction) { MoveInstructionParser.new('B2C').parse }
+
+      it { expect(chick.validate_movable_range(from_instruction, to_instruction)).to be_nil }
+    end
+
+    context '移動不可能な場合' do
+      let(:from_instruction) { MoveInstructionParser.new('B3C').parse }
+      let(:to_instruction) { MoveInstructionParser.new('B4C').parse }
+
+      it { expect { chick.validate_movable_range(from_instruction, to_instruction) }.to raise_error InvalidAnimalMovableRangeError }
+    end
   end
 
   describe '#grow_up' do

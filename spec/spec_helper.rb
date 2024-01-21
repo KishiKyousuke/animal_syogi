@@ -4,6 +4,7 @@
 # this file to always be loaded, without a need to explicitly require it in any
 # files.
 
+require_relative '../move_direction'
 require_relative '../animal'
 require_relative '../animal/lion'
 require_relative '../animal/elephant'
@@ -15,7 +16,7 @@ require_relative '../player'
 require_relative '../diagram'
 require_relative '../board'
 require_relative '../input_parser'
-require_relative '../move_direction'
+require_relative '../exceptions/invalid_animal_movable_range_error'
 require_relative '../game'
 
 # Given that it is always loaded, you are encouraged to keep this file as
