@@ -5,37 +5,39 @@ RSpec.describe MoveDirection do
   describe '#advance_straight_ahead?' do
     context '先手の場合' do
       let(:first_move) { true }
+      let(:from_instruction) { { row_index: 2, column_index: 1 } }
 
       context '前進するとき' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 1, column_index: 1 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq true }
       end
 
+      context '2マス前進するとき' do
+        let(:to_instruction) { { row_index: 0, column_index: 1 } }
+
+        it { expect(move_direction.advance_straight_ahead?).to eq false }
+      end
+
       context '後退するとき' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 3, column_index: 1 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
       end
 
       context '横に移動する時' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
-        let(:to_instruction) { { row_index: 1, column_index: 2 } }
+        let(:to_instruction) { { row_index: 2, column_index: 2 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
       end
 
       context '斜め前に移動するとき' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 1, column_index: 2 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
       end
 
       context '停滞するとき' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 2, column_index: 1 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
@@ -44,37 +46,39 @@ RSpec.describe MoveDirection do
 
     context '後手の場合' do
       let(:first_move) { false }
+      let(:from_instruction) { { row_index: 1, column_index: 1 } }
 
       context '前進するとき' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 2, column_index: 1 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq true }
       end
 
+      context '2マス前進するとき' do
+        let(:to_instruction) { { row_index: 3, column_index: 1 } }
+
+        it { expect(move_direction.advance_straight_ahead?).to eq false }
+      end
+
       context '後退するとき' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 0, column_index: 1 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
       end
 
       context '横に移動する時' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 1, column_index: 2 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
       end
 
       context '斜め前に移動するとき' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 2, column_index: 2 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
       end
 
       context '停滞するとき' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 1, column_index: 1 } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
@@ -85,37 +89,40 @@ RSpec.describe MoveDirection do
   describe '#retreat_straight_back?' do
     context '先手の場合' do
       let(:first_move) { true }
+      let(:from_instruction) { { row_index: 2, column_index: 1 } }
 
       context '前進するとき' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 1, column_index: 1 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq false }
       end
 
       context '後退するとき' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 3, column_index: 1 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq true }
       end
 
+      context '2マス後退するとき' do
+        let(:from_instruction) { { row_index: 1, column_index: 1 } }
+        let(:to_instruction) { { row_index: 3, column_index: 1 } }
+
+        it { expect(move_direction.retreat_straight_back?).to eq false }
+      end
+
       context '横に移動する時' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 1, column_index: 2 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq false }
       end
 
       context '斜め後ろに移動するとき' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 1, column_index: 2 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq false }
       end
 
       context '停滞するとき' do
-        let(:from_instruction) { { row_index: 2, column_index: 1 } }
         let(:to_instruction) { { row_index: 2, column_index: 1 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq false }
@@ -124,37 +131,40 @@ RSpec.describe MoveDirection do
 
     context '後手の場合' do
       let(:first_move) { false }
+      let(:from_instruction) { { row_index: 1, column_index: 1 } }
 
       context '前進するとき' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 2, column_index: 1 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq false }
       end
 
       context '後退するとき' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 0, column_index: 1 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq true }
       end
 
+      context '2マス後退するとき' do
+        let(:from_instruction) { { row_index: 2, column_index: 1 } }
+        let(:to_instruction) { { row_index: 0, column_index: 1 } }
+
+        it { expect(move_direction.retreat_straight_back?).to eq false }
+      end
+
       context '横に移動する時' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 2, column_index: 2 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq false }
       end
 
       context '斜め後ろに移動するとき' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 2, column_index: 2 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq false }
       end
 
       context '停滞するとき' do
-        let(:from_instruction) { { row_index: 1, column_index: 1 } }
         let(:to_instruction) { { row_index: 1, column_index: 1 } }
 
         it { expect(move_direction.retreat_straight_back?).to eq false }
@@ -164,8 +174,37 @@ RSpec.describe MoveDirection do
 
   describe '#sidestep?' do
     let(:first_move) { [true, false].sample }
+    let(:from_instruction) { { row_index: 1, column_index: 1 } }
 
     context '横に移動するとき' do
+      let(:to_instruction) { { row_index: 1, column_index: 2 } }
+
+      it { expect(move_direction.sidestep?).to eq true }
+    end
+
+    context '2マス横に移動するとき' do
+      let(:from_instruction) { { row_index: 1, column_index: 0 } }
+      let(:to_instruction) { { row_index: 1, column_index: 2 } }
+
+      it { expect(move_direction.sidestep?).to eq false }
+    end
+
+    context '前進または後退するとき' do
+      let(:to_instruction) { { row_index: 2, column_index: 1 } }
+
+      it { expect(move_direction.sidestep?).to eq false }
+    end
+
+    context '斜めに移動するとき' do
+      let(:to_instruction) { { row_index: 2, column_index: 2 } }
+
+      it { expect(move_direction.sidestep?).to eq false }
+    end
+
+    context '停滞するとき' do
+      let(:to_instruction) { { row_index: 1, column_index: 1 } }
+
+      it { expect(move_direction.sidestep?).to eq false }
     end
   end
 
