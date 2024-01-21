@@ -40,19 +40,19 @@ class Player
     move_animal_index = animals_in_hand.find_index { |animal_in_hand| animal_in_hand.is_a?(from_instruction[:animal_class]) }
     move_animal = animals_in_hand.delete_at(move_animal_index)
     # TODO: boardの指定位置に駒が存在するかどうかの判定が必要
-    board.positions[from_instruction[:row_index]][from_instruction[:column_key]] = move_animal
+    board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = move_animal
     board.placed_animals << move_animal
   end
 
   def move_from(board, from, to)
     from_instruction = MoveInstructionParser.new(from).parse
-    animal = board.positions[from_instruction[:row_index]][from_instruction[:column_key]]
+    animal = board.positions[from_instruction[:row_index]][from_instruction[:column_index]]
     # TODO: 指定したanimalが存在するかのチェック
-    board.positions[from_instruction[:row_index]][from_instruction[:column_key]] = nil
+    board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = nil
     to_instruction = MoveInstructionParser.new(to).parse
     # TODO: 指定したanimalがその動きができるかのチェック
     # TODO: 移動先が正しいかのチェック
     # TODO: 移動後の処理（capture, try, growなど）
-    board.positions[to_instruction[:row_index]][to_instruction[:column_key]] = animal
+    board.positions[to_instruction[:row_index]][to_instruction[:column_index]] = animal
   end
 end
