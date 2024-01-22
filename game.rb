@@ -49,7 +49,7 @@ class Game
         input = gets
         from, to = InputParser.new(input).parse
         player.move_animal(board:, from:, to:)
-      rescue InvalidAnimalMovableRangeError => e
+      rescue InvalidAnimalMovableRangeError, InvalidInputError => e
         puts e.message
         redo
       end
