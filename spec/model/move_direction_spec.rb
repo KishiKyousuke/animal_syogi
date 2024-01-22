@@ -73,7 +73,7 @@ RSpec.describe MoveDirection do
       end
 
       context '斜め前に移動するとき' do
-        let(:to_instruction) { { row_index: 2, column_index: [0, 2] } }
+        let(:to_instruction) { { row_index: 2, column_index: [0, 2].sample } }
 
         it { expect(move_direction.advance_straight_ahead?).to eq false }
       end

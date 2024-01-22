@@ -4,7 +4,10 @@ class Animal::Giraffe < Animal
   end
 
   def validate_movable_range(current_position, moving_position)
-    # TODO: キリンの移動可能な位置かを判定
+    move_direction = MoveDirection.new(current_position, moving_position, possession_player)
+    unless move_direction.advance_straight_ahead? || move_direction.retreat_straight_back? || move_direction.sidestep?
+      raise InvalidAnimalMovableRangeError
+    end
   end
 
   def shortened_name

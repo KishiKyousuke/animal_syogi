@@ -4,7 +4,10 @@ class Animal::Elephant < Animal
   end
 
   def validate_movable_range(current_position, moving_position)
-    # TODO: ゾウの移動可能な位置かを判定
+    move_direction = MoveDirection.new(current_position, moving_position, possession_player)
+    unless move_direction.diagonally_progress? || move_direction.diagonally_retreat?
+      raise InvalidAnimalMovableRangeError
+    end
   end
 
   def shortened_name
