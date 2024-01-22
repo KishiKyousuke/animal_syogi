@@ -43,4 +43,12 @@ RSpec.describe Player do
       it { expect(player.name).to eq '後手' }
     end
   end
+
+  describe '#move_animal' do
+    context 'fromとtoが指定されている場合' do
+    end
+
+    context 'toだけが指定されている場合' do
+    end
+  end
 end
