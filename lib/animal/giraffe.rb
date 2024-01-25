@@ -1,3 +1,5 @@
+require_relative '../animal'
+
 class Animal::Giraffe < Animal
   def initialize(possession_player:)
     super

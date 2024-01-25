@@ -1,21 +1,4 @@
-require_relative 'lib/move_direction'
-require_relative 'lib/animal'
-require_relative 'lib/animal/lion'
-require_relative 'lib/animal/elephant'
-require_relative 'lib/animal/giraffe'
-require_relative 'lib/animal/chick'
-require_relative 'lib/animal/chicken'
-require_relative 'lib/exceptions/invalid_input_error'
-require_relative 'lib/move_instruction_parser'
-require_relative 'lib/exceptions/animal_not_exist_on_board_error'
-require_relative 'lib/exceptions/animal_not_exist_in_hand_error'
-require_relative 'lib/exceptions/no_animal_possession_error'
-require_relative 'lib/player'
-require_relative 'lib/diagram'
-require_relative 'lib/board'
-require_relative 'lib/input_parser'
-require_relative 'lib/exceptions/invalid_animal_movable_range_error'
-require_relative 'lib/game'
+Dir["./lib/**/*.rb"].each { |file| require_relative file }
 
 game = Game.new
 game.start

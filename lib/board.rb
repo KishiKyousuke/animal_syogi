@@ -1,3 +1,5 @@
+require_relative 'diagram'
+
 class Board
   include Diagram
 
