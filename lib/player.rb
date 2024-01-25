@@ -51,16 +51,20 @@ class Player
     moving_animal.validate_movable_range(from_instruction, to_instruction)
 
     capture_animal(board, existing_animal) if existing_animal
+    if board.foremost_line?(self, to_instruction[:row_index]) && moving_animal.respond_to?(:grow_up)
+      moving_animal = moving_animal.grow_up
+      board.placed_animals << moving_animal
+    end
 
     board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = nil
     board.positions[to_instruction[:row_index]][to_instruction[:column_index]] = nil
-
     board.positions[to_instruction[:row_index]][to_instruction[:column_index]] = moving_animal
   end
 
   def capture_animal(board, animal)
     raise CannotCaptureAllyAnimalError if animal.possession_player == self
-    captured_animal = board.placed_animals.find { |placed_animal| placed_animal == animal }
+    captured_animal_index = board.placed_animals.find_index { |placed_animal| placed_animal == animal }
+    captured_animal = board.placed_animals.delete_at(captured_animal_index)
     animals_in_hand << captured_animal
     captured_animal.possession_player = self
   end
