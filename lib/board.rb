@@ -29,4 +29,9 @@ class Board
       puts row
     end
   end
+
+  def foremost_line?(player, row_index)
+    foremost_line_index = player.first_move? ? 0 : 3
+    row_index == foremost_line_index
+  end
 end
