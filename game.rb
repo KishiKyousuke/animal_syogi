@@ -5,6 +5,8 @@ class Game
     @board = Board.new(placed_animals: [])
   end
 
+  ERRORS = [InvalidAnimalMovableRangeError, InvalidInputError, AnimalNotExistOnBoardError, AnimalNotExistInHandError].freeze
+
   attr_reader :sente, :gote, :board
 
   INITIAL_ANIMALS = [Animal::Lion, Animal::Chick, Animal::Elephant, Animal::Giraffe]
@@ -49,7 +51,7 @@ class Game
         input = gets
         from, to = InputParser.new(input).parse
         player.move_animal(board:, from:, to:)
-      rescue InvalidAnimalMovableRangeError, InvalidInputError, AnimalNotExistOnBoardError => e
+      rescue *ERRORS => e
         puts e.message
         redo
       end
