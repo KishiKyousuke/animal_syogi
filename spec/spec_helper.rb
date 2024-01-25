@@ -4,21 +4,21 @@
 # this file to always be loaded, without a need to explicitly require it in any
 # files.
 
-require_relative '../move_direction'
-require_relative '../animal'
-require_relative '../animal/lion'
-require_relative '../animal/elephant'
-require_relative '../animal/giraffe'
-require_relative '../animal/chick'
-require_relative '../animal/chicken'
-require_relative '../move_instruction_parser'
-require_relative '../player'
-require_relative '../diagram'
-require_relative '../board'
-require_relative '../exceptions/invalid_input_error'
-require_relative '../input_parser'
-require_relative '../exceptions/invalid_animal_movable_range_error'
-require_relative '../game'
+require_relative '../lib/move_direction'
+require_relative '../lib/animal'
+require_relative '../lib/animal/lion'
+require_relative '../lib/animal/elephant'
+require_relative '../lib/animal/giraffe'
+require_relative '../lib/animal/chick'
+require_relative '../lib/animal/chicken'
+require_relative '../lib/move_instruction_parser'
+require_relative '../lib/player'
+require_relative '../lib/diagram'
+require_relative '../lib/board'
+require_relative '../lib/exceptions/invalid_input_error'
+require_relative '../lib/input_parser'
+require_relative '../lib/exceptions/invalid_animal_movable_range_error'
+require_relative '../lib/game'
 
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
