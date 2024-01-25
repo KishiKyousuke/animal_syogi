@@ -18,10 +18,6 @@ class Player
     end
   end
 
-  def capture(animal)
-    # TODO: 相手の動物を獲得するメソッド
-  end
-
   def win(game)
     # TODO: 勝利が決定するメソッド
   end
@@ -50,7 +46,8 @@ class Player
     to_instruction = MoveInstructionParser.new(to).parse
 
     moving_animal = board.positions[from_instruction[:row_index]][from_instruction[:column_index]]
-    # TODO: 指定したanimalが存在するかのチェック
+
+    board.validate_animal_existence(moving_animal, from_instruction[:row_index], from_instruction[:column_index])
     moving_animal.validate_movable_range(from_instruction, to_instruction)
     # TODO: 移動先が正しいかのチェック
     board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = nil
