@@ -34,6 +34,6 @@ class InputParser
 
     from_shortened_name = @from.chars.last
     to_shortened_name = @to.chars.last
-    from_shortened_name.downcase == to_shortened_name.downcase
+    from_shortened_name == to_shortened_name
   end
 end
