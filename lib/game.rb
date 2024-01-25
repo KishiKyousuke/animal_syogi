@@ -13,7 +13,8 @@ class Game
             AnimalNotExistOnBoardError,
             AnimalNotExistInHandError,
             NoAnimalPossessionError,
-            CannotCaptureAllyAnimalError].freeze
+            CannotCaptureAllyAnimalError,
+            CannotDropOnAnimalError].freeze
 
   attr_reader :sente, :gote, :board
 

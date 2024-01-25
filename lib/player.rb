@@ -32,9 +32,9 @@ class Player
     from_instruction = MoveInstructionParser.new(to).parse
     move_animal_index = animals_in_hand.find_index { |animal_in_hand| animal_in_hand.is_a?(from_instruction[:animal_class]) }
     raise AnimalNotExistInHandError if move_animal_index.nil?
+    raise CannotDropOnAnimalError if board.animal_exists?(from_instruction[:row_index], from_instruction[:column_index])
 
     move_animal = animals_in_hand.delete_at(move_animal_index)
-    # TODO: boardの指定位置に駒が存在するかどうかの判定が必要
     board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = move_animal
     board.placed_animals << move_animal
   end
