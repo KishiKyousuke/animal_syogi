@@ -6,7 +6,6 @@ class MoveInstructionParser
   attr_reader :input
 
   def parse
-    # TODO: 命令形式のバリデーションを追加する
     column_position, row_position, shortened_name = input.chars
     { animal_class: shortened_name_to_class(shortened_name), column_index: alphabet_to_index(column_position), row_index: row_position.to_i - 1}
   end
