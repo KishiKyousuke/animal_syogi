@@ -1,6 +1,6 @@
-RSpec.describe Animal::Elephant do
+RSpec.describe Elephant do
   describe '#shortened_name' do
-    let!(:elephant) { Animal::Elephant.new(possession_player: possession_player) }
+    let!(:elephant) { Elephant.new(possession_player: possession_player) }
 
     context '先手の場合' do
       let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
@@ -16,7 +16,7 @@ RSpec.describe Animal::Elephant do
   end
 
   describe '#initial_position' do
-    let!(:elephant) { Animal::Elephant.new(possession_player: possession_player) }
+    let!(:elephant) { Elephant.new(possession_player: possession_player) }
 
     context '先手の場合' do
       let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
@@ -32,7 +32,7 @@ RSpec.describe Animal::Elephant do
   end
 
   describe '#validate_movable_range' do
-    let!(:elephant) { Animal::Elephant.new(possession_player: possession_player) }
+    let!(:elephant) { Elephant.new(possession_player: possession_player) }
     let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
     let(:from_instruction) { MoveInstructionParser.new('B3E').parse }
     let(:movable_position) { "#{%w(A2 A4 C2 C4).sample}E" }

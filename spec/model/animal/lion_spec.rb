@@ -1,6 +1,6 @@
-RSpec.describe Animal::Lion do
+RSpec.describe Lion do
   describe '#shortened_name' do
-    let!(:lion) { Animal::Lion.new(possession_player: possession_player) }
+    let!(:lion) { Lion.new(possession_player: possession_player) }
 
     context '先手の場合' do
       let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
@@ -16,7 +16,7 @@ RSpec.describe Animal::Lion do
   end
 
   describe '#initial_position' do
-    let!(:lion) { Animal::Lion.new(possession_player: possession_player) }
+    let!(:lion) { Lion.new(possession_player: possession_player) }
 
     context '先手の場合' do
       let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
@@ -32,7 +32,7 @@ RSpec.describe Animal::Lion do
   end
 
   describe '#validate_movable_range' do
-    let!(:lion) { Animal::Lion.new(possession_player: possession_player) }
+    let!(:lion) { Lion.new(possession_player: possession_player) }
     let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
     let(:from_instruction) { MoveInstructionParser.new('B3L').parse }
     let(:movable_position) { "#{%w(A2 A3 A4 B2 B4 C2 C3 C4).sample}L" }

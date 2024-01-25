@@ -1,6 +1,6 @@
-RSpec.describe Animal::Giraffe do
+RSpec.describe Giraffe do
   describe '#shortened_name' do
-    let!(:giraffe) { Animal::Giraffe.new(possession_player: possession_player) }
+    let!(:giraffe) { Giraffe.new(possession_player: possession_player) }
 
     context '先手の場合' do
       let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
@@ -16,7 +16,7 @@ RSpec.describe Animal::Giraffe do
   end
 
   describe '#initial_position' do
-    let!(:giraffe) { Animal::Giraffe.new(possession_player: possession_player) }
+    let!(:giraffe) { Giraffe.new(possession_player: possession_player) }
 
     context '先手の場合' do
       let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
@@ -32,7 +32,7 @@ RSpec.describe Animal::Giraffe do
   end
 
   describe '#validate_movable_range' do
-    let!(:giraffe) { Animal::Giraffe.new(possession_player: possession_player) }
+    let!(:giraffe) { Giraffe.new(possession_player: possession_player) }
     let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
     let(:from_instruction) { MoveInstructionParser.new('B3G').parse }
     let(:movable_position) { "#{%w(A3 B2 B4 C3).sample}G" }

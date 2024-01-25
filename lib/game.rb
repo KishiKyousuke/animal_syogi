@@ -9,7 +9,7 @@ class Game
 
   attr_reader :sente, :gote, :board
 
-  INITIAL_ANIMALS = [Animal::Lion, Animal::Chick, Animal::Elephant, Animal::Giraffe]
+  INITIAL_ANIMALS = [Lion, Chick, Elephant, Giraffe]
 
   def start
     sharing_animals

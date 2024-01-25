@@ -16,15 +16,15 @@ class MoveInstructionParser
   def shortened_name_to_class(shortened_name)
     case shortened_name
     when 'L', 'l'
-      Animal::Lion
+      Lion
     when 'C', 'c'
-      Animal::Chick
+      Chick
     when 'P', 'p'
-      Animal::Chicken
+      Chicken
     when 'E', 'e'
-      Animal::Elephant
+      Elephant
     when 'G', 'g'
-      Animal::Giraffe
+      Giraffe
     end
   end
 

@@ -17,7 +17,7 @@ RSpec.describe Player do
 
   describe '#show_hands' do
     let!(:player) { Player.new(animals_in_hand: [], first_move: false) }
-    let(:animals_in_hand) { [Animal::Chick.new(possession_player: player), Animal::Giraffe.new(possession_player: player)] }
+    let(:animals_in_hand) { [Chick.new(possession_player: player), Giraffe.new(possession_player: player)] }
 
     before do
       player.instance_variable_set(:@animals_in_hand, animals_in_hand)

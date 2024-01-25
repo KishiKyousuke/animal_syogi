@@ -1,6 +1,6 @@
-RSpec.describe Animal::Chick do
+RSpec.describe Chick do
   describe '#shortened_name' do
-    let!(:chick) { Animal::Chick.new(possession_player: possession_player) }
+    let!(:chick) { Chick.new(possession_player: possession_player) }
 
     context '先手の場合' do
       let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
@@ -16,7 +16,7 @@ RSpec.describe Animal::Chick do
   end
 
   describe '#initial_position' do
-    let!(:chick) { Animal::Chick.new(possession_player: possession_player) }
+    let!(:chick) { Chick.new(possession_player: possession_player) }
 
     context '先手の場合' do
       let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
@@ -32,7 +32,7 @@ RSpec.describe Animal::Chick do
   end
 
   describe '#validate_movable_range' do
-    let!(:chick) { Animal::Chick.new(possession_player: possession_player) }
+    let!(:chick) { Chick.new(possession_player: possession_player) }
     let(:possession_player) { Player.new(animals_in_hand: [], first_move: true) }
     let(:from_instruction) { MoveInstructionParser.new('B3C').parse }
     let(:movable_position) { 'B2C' }

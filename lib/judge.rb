@@ -6,7 +6,7 @@ module Judge
   private
 
   def lion_catch?(player)
-    player.animals_in_hand.any? { |animal| animal.is_a?(Animal::Lion) }
+    player.animals_in_hand.any? { |animal| animal.is_a?(Lion) }
   end
 
   def lion_try?(board, player)
@@ -16,6 +16,6 @@ module Judge
                  board.positions[3].values
                end
 
-    win_area.values.any? { |animal| animal.is_a?(Animal::Lion) && animal.possession_player == player }
+    win_area.values.any? { |animal| animal.is_a?(Lion) && animal.possession_player == player }
   end
 end

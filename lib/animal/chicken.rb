@@ -1,6 +1,6 @@
 require_relative '../animal'
 
-class Animal::Chicken < Animal
+class Chicken < Animal
   def initialize(possession_player:)
     super
   end

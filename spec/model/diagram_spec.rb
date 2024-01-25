@@ -15,14 +15,14 @@ RSpec.describe Diagram do
     context '盤上に動物が存在する場合' do
       let!(:sente) { Player.new(animals_in_hand: [], first_move: true) }
       let!(:gote) { Player.new(animals_in_hand: [], first_move: false) }
-      let!(:sente_chick) { Animal::Chick.new(possession_player: sente) }
-      let!(:sente_lion) { Animal::Lion.new(possession_player: sente) }
-      let!(:sente_giraffe) { Animal::Giraffe.new(possession_player: sente) }
-      let!(:sente_elephant) { Animal::Elephant.new(possession_player: sente) }
-      let!(:gote_chick) { Animal::Chick.new(possession_player: gote) }
-      let!(:gote_lion) { Animal::Lion.new(possession_player: gote) }
-      let!(:gote_giraffe) { Animal::Giraffe.new(possession_player: gote) }
-      let!(:gote_elephant) { Animal::Elephant.new(possession_player: gote) }
+      let!(:sente_chick) { Chick.new(possession_player: sente) }
+      let!(:sente_lion) { Lion.new(possession_player: sente) }
+      let!(:sente_giraffe) { Giraffe.new(possession_player: sente) }
+      let!(:sente_elephant) { Elephant.new(possession_player: sente) }
+      let!(:gote_chick) { Chick.new(possession_player: gote) }
+      let!(:gote_lion) { Lion.new(possession_player: gote) }
+      let!(:gote_giraffe) { Giraffe.new(possession_player: gote) }
+      let!(:gote_elephant) { Elephant.new(possession_player: gote) }
       let!(:board) { Board.new(placed_animals: [sente_chick, sente_lion, sente_giraffe, sente_elephant, gote_chick, gote_lion, gote_giraffe, gote_elephant]) }
 
       before do
