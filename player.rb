@@ -64,5 +64,6 @@ class Player
   def capture_animal(board, animal)
     captured_animal = board.placed_animals.find { |placed_animal| placed_animal == animal }
     animals_in_hand << captured_animal
+    captured_animal.possession_player = self
   end
 end
