@@ -44,21 +44,22 @@ class Player
     to_instruction = MoveInstructionParser.new(to).parse
 
     moving_animal = board.positions[from_instruction[:row_index]][from_instruction[:column_index]]
+    existing_animal = board.positions[to_instruction[:row_index]][to_instruction[:column_index]]
 
     board.validate_animal_existence(moving_animal, from_instruction[:row_index], from_instruction[:column_index])
     raise NoAnimalPossessionError if moving_animal.possession_player != self
     moving_animal.validate_movable_range(from_instruction, to_instruction)
-    # TODO: 移動先が正しいかのチェック
-    board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = nil
 
-    existing_animal = board.positions[to_instruction[:row_index]][to_instruction[:column_index]]
     capture_animal(board, existing_animal) if existing_animal
+
+    board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = nil
     board.positions[to_instruction[:row_index]][to_instruction[:column_index]] = nil
 
     board.positions[to_instruction[:row_index]][to_instruction[:column_index]] = moving_animal
   end
 
   def capture_animal(board, animal)
+    raise CannotCaptureAllyAnimalError if animal.possession_player == self
     captured_animal = board.placed_animals.find { |placed_animal| placed_animal == animal }
     animals_in_hand << captured_animal
     captured_animal.possession_player = self
