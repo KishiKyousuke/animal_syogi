@@ -19,6 +19,6 @@ class Chick < Animal
   end
 
   def grow_up
-    # TODO: ニワトリに成るメソッド
+    Chicken.new(possession_player:)
   end
 end
