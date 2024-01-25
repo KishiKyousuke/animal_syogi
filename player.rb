@@ -50,6 +50,7 @@ class Player
     moving_animal = board.positions[from_instruction[:row_index]][from_instruction[:column_index]]
 
     board.validate_animal_existence(moving_animal, from_instruction[:row_index], from_instruction[:column_index])
+    raise NoAnimalPossessionError if moving_animal.possession_player != self
     moving_animal.validate_movable_range(from_instruction, to_instruction)
     # TODO: 移動先が正しいかのチェック
     board.positions[from_instruction[:row_index]][from_instruction[:column_index]] = nil

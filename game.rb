@@ -5,7 +5,7 @@ class Game
     @board = Board.new(placed_animals: [])
   end
 
-  ERRORS = [InvalidAnimalMovableRangeError, InvalidInputError, AnimalNotExistOnBoardError, AnimalNotExistInHandError].freeze
+  ERRORS = [InvalidAnimalMovableRangeError, InvalidInputError, AnimalNotExistOnBoardError, AnimalNotExistInHandError, NoAnimalPossessionError].freeze
 
   attr_reader :sente, :gote, :board
 

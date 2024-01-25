@@ -3,7 +3,7 @@ class Animal
     @possession_player = possession_player
   end
 
-  attr_reader :possession_player
+  attr_accessor :possession_player
 
   def initial_position
     raise NotImplementedError, "You must implement #{self.class}##{__method__}"
