@@ -14,6 +14,14 @@ class Board
 
   attr_accessor :positions, :placed_animals
 
+  def animal_exists?(row_index, column_index)
+    !positions[row_index][column_index].nil?
+  end
+
+  def validate_animal_existence(animal, row_index, column_index)
+    raise NoAnimalExistError unless animal_exists?(row_index, column_index) && positions[row_index][column_index] == animal
+  end
+
   def movable?(current_position, moving_position)
     # TODO: 指定された位置に移動可能かを判定する
   end
