@@ -1,4 +1,7 @@
+require_relative 'judge'
+
 class Game
+  include Judge
   def initialize
     @sente = Player.new(animals_in_hand: [], first_move: true)
     @gote = Player.new(animals_in_hand: [], first_move: false)
@@ -51,6 +54,9 @@ class Game
         input = gets
         from, to = InputParser.new(input).parse
         player.move_animal(board:, from:, to:)
+
+        winner = judge_winner(board: board, player: player)
+        return puts "#{winner.name}の勝利です" if winner
       rescue *ERRORS => e
         puts e.message
         redo

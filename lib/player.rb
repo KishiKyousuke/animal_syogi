@@ -18,10 +18,6 @@ class Player
     end
   end
 
-  def win(game)
-    # TODO: 勝利が決定するメソッド
-  end
-
   def first_move?
     first_move
   end
